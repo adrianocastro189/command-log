@@ -1,6 +1,7 @@
-# %AddonName%
+# CommandLog
 
-%Description%
+A World of Warcraft addon that holds a history of executed slash commands with
+the option to run them again.
 
 ## ❤️ Support this project
 

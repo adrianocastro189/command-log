@@ -26,20 +26,20 @@ BaseTestClass = {
 
         dofile('./lib/stormwind-library.lua')
 
-        dofile('./%Addon%.lua')
+        dofile('./CommandLog.lua')
 
-        -- %Table% = nil
-        AddonTable.events:handleOriginal(nil, 'PLAYER_LOGIN')
-        AddonTable.output:setTestingMode()
+        CommandLogData = nil
+        CommandLog.events:handleOriginal(nil, 'PLAYER_LOGIN')
+        CommandLog.output:setTestingMode()
 
-        function dd(...) AddonTable:dd(...) end
+        function dd(...) CommandLog:dd(...) end
     end,
 
     -- guarantees that every test class inherits from this class by forcing
     -- the global addon usages to throw an error if it's not set, so tests
     -- that miss inheriting from this class will fail
     tearDown = function()
-        AddonTable = nil
+        CommandLog = nil
     end,
 }
 
@@ -81,7 +81,7 @@ TestCase = {}
 
 dofile('./tests/spies.lua')
 
-dofile('./tests/%Addon%Test.lua')
+dofile('./tests/CommandLogTest.lua')
 
 lu.ORDER_ACTUAL_EXPECTED=false
 
