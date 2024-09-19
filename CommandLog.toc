@@ -10,3 +10,5 @@
 lib\stormwind-library.lua
 
 CommandLog.lua
+
+src\Models\SlashCommand.lua
