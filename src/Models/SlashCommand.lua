@@ -28,6 +28,19 @@ local SlashCommand = {}
     end
 
     --[[
+    Executes this slash command with optional arguments.
+
+    The optional arguments are passed as an array of strings, which will be
+    concatenated to the command string.
+
+    @tparam string[] optionalArgs
+    ]]
+    function SlashCommand:execute(optionalArgs)
+        ChatFrame1EditBox:SetText(self:toString(optionalArgs))
+        ChatEdit_SendText(ChatFrame1EditBox, true)
+    end
+
+    --[[
     Creates a new SlashCommand instance from a string.
 
     To be a valid slash command, the string must start with a single / followed

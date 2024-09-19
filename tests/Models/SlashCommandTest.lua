@@ -10,6 +10,32 @@ TestCase.new()
     end)
     :register()
 
+-- @covers SlashCommand:execute()
+TestCase.new()
+    :setName('execute')
+    :setTestClass(TestSlashCommand)
+    :setExecution(function()
+        local instance = Spy
+            .new(CommandLog:new('CommandLog/SlashCommand'))
+            :mockMethod('toString', function() return '/command args' end)
+
+        ChatFrame1EditBox = Spy.new():mockMethod('SetText')
+
+        local editBoxArg, booleanArg = nil, nil
+        ChatEdit_SendText = function(editBox, boolean)
+            editBoxArg = editBox
+            booleanArg = boolean
+        end
+
+        instance:execute({'args'})
+
+        instance:getMethod('toString'):assertCalledOnceWith({'args'})
+        ChatFrame1EditBox:getMethod('SetText'):assertCalledOnceWith('/command args')
+        lu.assertEquals(ChatFrame1EditBox, editBoxArg)
+        lu.assertEquals(true, booleanArg)
+    end)
+    :register()
+
 -- @covers SlashCommand.newFromString()
 TestCase.new()
     :setName('newFromString with invalid strings')
