@@ -57,8 +57,4 @@ addon that are already being addressed and will be fixed in future versions:
 
 ## Changelog
 
-#### %yyyy.mm.dd - version x.y.z%
-
-* %Item1%
-* %Item2%
-* %Item3%
+### yyyy.mm.dd - version 0.0.1-alpha
