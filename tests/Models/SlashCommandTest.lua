@@ -65,4 +65,35 @@ TestCase.new()
         },
     })
     :register()
+
+-- @covers SlashCommand:toString()
+TestCase.new()
+    :setName('toString')
+    :setTestClass(TestSlashCommand)
+    :setExecution(function(data)
+        local instance = CommandLog:new('CommandLog/SlashCommand')
+        instance.command = data.command
+
+        local result = instance:toString(data.optionalArgs)
+
+        lu.assertEquals(data.expectedResult, result)
+    end)
+    :setScenarios({
+        ['single command'] = {
+            command = 'command',
+            optionalArgs = nil,
+            expectedResult = '/command',
+        },
+        ['single command with empty args'] = {
+            command = 'command',
+            optionalArgs = {},
+            expectedResult = '/command',
+        },
+        ['command with args'] = {
+            command = 'command',
+            optionalArgs = {'arg1', 'arg2'},
+            expectedResult = '/command arg1 arg2',
+        },
+    })
+    :register()
 -- end of TestSlashCommand

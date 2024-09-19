@@ -34,6 +34,8 @@ local SlashCommand = {}
     by a word that represents the command. The command may have spaces
     indicating it has arguments, however, invalid characters in the command part
     are not allowed.
+
+    @tparam string commandString
     ]]
     function SlashCommand.newFromString(commandString)
         local self = SlashCommand.__construct()
@@ -53,5 +55,25 @@ local SlashCommand = {}
         end
 
         return self
+    end
+
+    --[[
+    Gets the string representation of this slash command that may include
+    arguments (optional).
+
+    The arguments are passed as an array of strings, but if not provided, the
+    command will be returned as is, starting with slash.
+
+    @tparam string[] optionalArgs
+
+    @treturn string
+    ]]
+    function SlashCommand:toString(optionalArgs)
+        local commandParts = CommandLog.arr:concat(
+            {'/'..self.command},
+            optionalArgs or {}
+        )
+
+        return CommandLog.arr:implode(' ', commandParts)
     end
 -- end of SlashCommand
