@@ -78,6 +78,11 @@ TestCase.new()
             expectedArgs = {'arg1', 'arg2'},
             expectedCommand = 'command',
         },
+        ['args and multiple spaces'] = {
+            slashCommand = '/command arg1  arg2  arg3',
+            expectedArgs = {'arg1', 'arg2', 'arg3'},
+            expectedCommand = 'command',
+        },
     })
     :register()
 
