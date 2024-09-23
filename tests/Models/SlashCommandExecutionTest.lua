@@ -56,9 +56,29 @@ TestCase.new()
 TestCase.new()
     :setName('newFromString')
     :setTestClass(TestSlashCommandExecution)
-    :setExecution(function()
-        -- @TODO: Implement this method in SE3 <2024.09.23>
+    :setExecution(function(data)
+        _G['time'] = function() return 1 end
+
+        local instance = CommandLog
+            :getClass('CommandLog/SlashCommandExecution')
+            .newFromString(data.slashCommand)
+
+        lu.assertEquals(data.expectedCommand, instance.slashCommand.command)
+        lu.assertEquals(data.expectedArgs, instance.args)
+        lu.assertEquals(1, instance.executedAt)
     end)
+    :setScenarios({
+        ['simple command'] = {
+            slashCommand = '/command',
+            expectedArgs = {},
+            expectedCommand = 'command',
+        },
+        ['command with args'] = {
+            slashCommand = '/command arg1 arg2',
+            expectedArgs = {'arg1', 'arg2'},
+            expectedCommand = 'command',
+        },
+    })
     :register()
 
 -- @covers SlashCommandExecution.reExecute()
