@@ -86,8 +86,8 @@ dofile('./tests/spies.lua')
 
 dofile('./tests/CommandLogTest.lua')
 
-dofile('./tests/Models/SlashCommandTest.lua')
 dofile('./tests/Models/SlashCommandExecutionTest.lua')
+dofile('./tests/Models/SlashCommandTest.lua')
 
 lu.ORDER_ACTUAL_EXPECTED=false
 
