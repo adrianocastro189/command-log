@@ -59,7 +59,18 @@ local SlashCommandExecution = {}
     @treturn SlashCommandExecution
     ]]
     function SlashCommandExecution.newFromString(value)
-        -- @TODO: Implement this method in SE3 <2024.09.23>
+        local slashCommand = CommandLog
+            :getClass('CommandLog/SlashCommand')
+            .newFromString(value)
+
+        local valueParts = CommandLog.str:split(value, ' ')
+
+        local instance = SlashCommandExecution.__construct()
+
+        instance.args = CommandLog.arr:slice(valueParts, 2)
+        instance.slashCommand = slashCommand
+
+        return instance
     end
 
     --[[
