@@ -37,7 +37,15 @@ local SlashCommandExecution = {}
     @treturn SlashCommandExecution
     ]]
     function SlashCommandExecution.newFromArray(values)
-        -- @TODO: Implement this method in SE2 <2024.09.23>
+        local instance = SlashCommandExecution.__construct()
+
+        instance.args = values.args or {}
+        instance.executedAt = values.executedAt
+        instance.slashCommand = CommandLog
+            :new('CommandLog/SlashCommand')
+            :setCommand(values.slashCommand)
+
+        return instance
     end
 
     --[[
