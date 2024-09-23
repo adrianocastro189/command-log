@@ -12,3 +12,4 @@ lib\stormwind-library.lua
 CommandLog.lua
 
 src\Models\SlashCommand.lua
+src\Models\SlashCommandExecution.lua
