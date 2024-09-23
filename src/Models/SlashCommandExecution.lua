@@ -23,4 +23,19 @@ local SlashCommandExecution = {}
 
         return self
     end
+
+    --[[
+    Creates a new SlashCommandExecution instance from an array of values.
+
+    Values must be a list of values that represent all the properties of an
+    instance. In this context, "args" must be an array of strings containing all
+    the arguments regardless of being wrapped or not by quotes.
+
+    @tparam table values
+
+    @treturn SlashCommandExecution
+    ]]
+    function SlashCommandExecution.newFromArray(values)
+        -- @TODO: Implement this method in SE2 <2024.09.23>
+    end
 -- end of SlashCommandExecution

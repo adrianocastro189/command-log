@@ -15,4 +15,13 @@ TestCase.new()
         lu.assertIsNil(instance.slashCommand)
     end)
     :register()
+
+-- @covers SlashCommandExecution.newFromArray()
+TestCase.new()
+    :setName('newFromArray')
+    :setTestClass(TestSlashCommandExecution)
+    :setExecution(function()
+        -- @TODO: Implement this method in SE2 <2024.09.23>
+    end)
+    :register()
 -- end of TestSlashCommandExecution
