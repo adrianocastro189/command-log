@@ -29,7 +29,8 @@ local SlashCommandExecution = {}
 
     Values must be a list of values that represent all the properties of an
     instance. In this context, "args" must be an array of strings containing all
-    the arguments regardless of being wrapped or not by quotes.
+    the arguments as broken by empty spaces regardless of being wrapped or not
+    by quotes.
 
     @tparam table values
 
@@ -51,5 +52,18 @@ local SlashCommandExecution = {}
     ]]
     function SlashCommandExecution.newFromString(value)
         -- @TODO: Implement this method in SE3 <2024.09.23>
+    end
+
+    --[[
+    Gets a table with all the properties of the instance as serializable data.
+
+    In this context, "args" is be an array of strings containing all the
+    arguments as broken by empty spaces regardless of being wrapped or not by
+    quotes.
+
+    @treturn table
+    ]]
+    function SlashCommandExecution:toArray()
+        -- @TODO: Implement this method in SE4 <2024.09.23>
     end
 -- end of SlashCommandExecution
