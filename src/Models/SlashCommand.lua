@@ -71,6 +71,18 @@ local SlashCommand = {}
     end
 
     --[[
+    Sets the command.
+
+    @tparam string value
+
+    @treturn SlashCommand self
+    ]]
+    function SlashCommand:setCommand(value)
+        self.command = value
+        return self
+    end
+
+    --[[
     Gets the string representation of this slash command that may include
     arguments (optional).
 

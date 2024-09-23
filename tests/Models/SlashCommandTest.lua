@@ -92,6 +92,21 @@ TestCase.new()
     })
     :register()
 
+-- @covers SlashCommand:setCommand()
+TestCase.new()
+    :setName('setCommand')
+    :setTestClass(TestSlashCommand)
+    :setExecution(function()
+        local instance = CommandLog:new('CommandLog/SlashCommand')
+
+        lu.assertIsNil(instance.command)
+
+        instance:setCommand('command')
+
+        lu.assertEquals('command', instance.command)
+    end)
+    :register()
+
 -- @covers SlashCommand:toString()
 TestCase.new()
     :setName('toString')
