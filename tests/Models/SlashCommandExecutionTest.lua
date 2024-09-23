@@ -34,6 +34,15 @@ TestCase.new()
     end)
     :register()
 
+-- @covers SlashCommandExecution.save()
+TestCase.new()
+    :setName('save')
+    :setTestClass(TestSlashCommandExecution)
+    :setExecution(function()
+        -- @TODO: Implement this method in SE5 <2024.09.23>
+    end)
+    :register()
+
 -- @covers SlashCommandExecution.toArray()
 TestCase.new()
     :setName('toArray')
