@@ -24,4 +24,13 @@ TestCase.new()
         -- @TODO: Implement this method in SE2 <2024.09.23>
     end)
     :register()
+
+-- @covers SlashCommandExecution.newFromString()
+TestCase.new()
+    :setName('newFromString')
+    :setTestClass(TestSlashCommandExecution)
+    :setExecution(function()
+        -- @TODO: Implement this method in SE3 <2024.09.23>
+    end)
+    :register()
 -- end of TestSlashCommandExecution

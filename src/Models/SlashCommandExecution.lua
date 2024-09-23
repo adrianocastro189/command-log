@@ -38,4 +38,18 @@ local SlashCommandExecution = {}
     function SlashCommandExecution.newFromArray(values)
         -- @TODO: Implement this method in SE2 <2024.09.23>
     end
+
+    --[[
+    Parses a slash command represented by a string and returns a new instance.
+
+    It's important to mention that this will return an instence with executedAt
+    set to the current time.
+
+    @tparam string value
+
+    @treturn SlashCommandExecution
+    ]]
+    function SlashCommandExecution.newFromString(value)
+        -- @TODO: Implement this method in SE3 <2024.09.23>
+    end
 -- end of SlashCommandExecution
