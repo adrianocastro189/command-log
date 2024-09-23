@@ -9,7 +9,7 @@ local SlashCommandExecution = {}
     SlashCommandExecution.__index = SlashCommandExecution
     CommandLog:addClass('CommandLog/SlashCommandExecution', SlashCommandExecution)
 
-    --[[--
+    --[[
     SlashCommandExecution constructor.
     ]]
     function SlashCommandExecution.__construct()
