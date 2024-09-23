@@ -16,7 +16,7 @@ local SlashCommand = {}
         COMMAND_REGEX = '^/([%w_]+)$',
     })
 
-    --[[--
+    --[[
     SlashCommand constructor.
     ]]
     function SlashCommand.__construct()

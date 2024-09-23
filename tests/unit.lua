@@ -29,6 +29,7 @@ BaseTestClass = {
         dofile('./CommandLog.lua')
 
         dofile('./src/Models/SlashCommand.lua')
+        dofile('./src/Models/SlashCommandExecution.lua')
 
         CommandLogData = nil
         CommandLog.events:handleOriginal(nil, 'PLAYER_LOGIN')
@@ -85,6 +86,7 @@ dofile('./tests/spies.lua')
 
 dofile('./tests/CommandLogTest.lua')
 
+dofile('./tests/Models/SlashCommandExecutionTest.lua')
 dofile('./tests/Models/SlashCommandTest.lua')
 
 lu.ORDER_ACTUAL_EXPECTED=false
