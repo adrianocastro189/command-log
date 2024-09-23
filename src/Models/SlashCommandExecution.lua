@@ -55,12 +55,19 @@ local SlashCommandExecution = {}
     end
 
     --[[
+    Re-executes the command with the same arguments.
+    ]]
+    function SlashCommandExecution:reExecute()
+        -- @TODO: Implement this method in SE6 <2024.09.23>
+    end
+
+    --[[
     Saves the instance to the addon data table.
     ]]
     function SlashCommandExecution:save()
         -- @TODO: Implement this method in SE5 <2024.09.23>
     end
-    
+
     --[[
     Gets a table with all the properties of the instance as serializable data.
 

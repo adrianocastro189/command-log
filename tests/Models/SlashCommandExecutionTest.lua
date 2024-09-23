@@ -34,6 +34,15 @@ TestCase.new()
     end)
     :register()
 
+-- @covers SlashCommandExecution.reExecute()
+TestCase.new()
+    :setName('reExecute')
+    :setTestClass(TestSlashCommandExecution)
+    :setExecution(function()
+        -- @TODO: Implement this method in SE6 <2024.09.23>
+    end)
+    :register()
+
 -- @covers SlashCommandExecution.save()
 TestCase.new()
     :setName('save')
