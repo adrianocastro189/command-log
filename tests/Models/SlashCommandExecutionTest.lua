@@ -99,9 +99,41 @@ TestCase.new()
 TestCase.new()
     :setName('save')
     :setTestClass(TestSlashCommandExecution)
-    :setExecution(function()
-        -- @TODO: Implement this method in SE5 <2024.09.23>
+    :setExecution(function(data)
+        CommandLog.slashCommandRepository = Spy
+            .new({})
+            :mockMethod('save', function() return data.saved end)
+
+        CommandLog.events = Spy
+            .new({})
+            :mockMethod('notify')
+        
+        local instance = CommandLog:new('CommandLog/SlashCommandExecution')
+
+        local saved = instance:save()
+
+        lu.assertEquals(data.saved, saved)
+
+        CommandLog.slashCommandRepository
+            :getMethod('save')
+            :assertCalledOnceWith(instance)
+
+        local notifyMethod = CommandLog.events:getMethod('notify')
+
+        if data.saved then
+            notifyMethod:assertCalledOnceWith('SLASH_COMMAND_EXECUTION_SAVED', instance)
+        else
+            notifyMethod:assertNotCalled()
+        end
     end)
+    :setScenarios({
+        ['saved'] = {
+            saved = true,
+        },
+        ['not saved'] = {
+            saved = false,
+        },
+    })
     :register()
 
 -- @covers SlashCommandExecution:toArray()
