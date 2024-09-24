@@ -77,7 +77,7 @@ local SlashCommandExecution = {}
     Re-executes the command with the same arguments.
     ]]
     function SlashCommandExecution:reExecute()
-        -- @TODO: Implement this method in SE6 <2024.09.23>
+        self.command:execute(self.args)
     end
 
     --[[
