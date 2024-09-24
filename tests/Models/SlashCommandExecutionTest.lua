@@ -86,7 +86,7 @@ TestCase.new()
     })
     :register()
 
--- @covers SlashCommandExecution.reExecute()
+-- @covers SlashCommandExecution:reExecute()
 TestCase.new()
     :setName('reExecute')
     :setTestClass(TestSlashCommandExecution)
@@ -95,7 +95,7 @@ TestCase.new()
     end)
     :register()
 
--- @covers SlashCommandExecution.save()
+-- @covers SlashCommandExecution:save()
 TestCase.new()
     :setName('save')
     :setTestClass(TestSlashCommandExecution)
@@ -104,12 +104,24 @@ TestCase.new()
     end)
     :register()
 
--- @covers SlashCommandExecution.toArray()
+-- @covers SlashCommandExecution:toArray()
 TestCase.new()
     :setName('toArray')
     :setTestClass(TestSlashCommandExecution)
     :setExecution(function()
-        -- @TODO: Implement this method in SE4 <2024.09.23>
+        local instance = CommandLog:new('CommandLog/SlashCommandExecution')
+
+        instance.args = {'arg1', 'arg2'}
+        instance.executedAt = 1
+        instance.slashCommand = CommandLog
+            :new('CommandLog/SlashCommand')
+            :setCommand('command')
+
+        local data = instance:toArray()
+
+        lu.assertEquals(data.args, {'arg1', 'arg2'})
+        lu.assertEquals(data.executedAt, 1)
+        lu.assertEquals(data.slashCommand, 'command')
     end)
     :register()
 -- end of TestSlashCommandExecution

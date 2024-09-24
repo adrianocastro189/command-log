@@ -97,6 +97,10 @@ local SlashCommandExecution = {}
     @treturn table
     ]]
     function SlashCommandExecution:toArray()
-        -- @TODO: Implement this method in SE4 <2024.09.23>
+        return {
+            args = self.args or {},
+            executedAt = self.executedAt,
+            slashCommand = self.slashCommand.command,
+        }
     end
 -- end of SlashCommandExecution
