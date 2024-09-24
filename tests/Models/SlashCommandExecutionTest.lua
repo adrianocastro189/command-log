@@ -91,7 +91,15 @@ TestCase.new()
     :setName('reExecute')
     :setTestClass(TestSlashCommandExecution)
     :setExecution(function()
-        -- @TODO: Implement this method in SE6 <2024.09.23>
+        local command = Spy.new():mockMethod('execute')
+        local instance = CommandLog:new('CommandLog/SlashCommandExecution')
+
+        instance.args = {'arg1', 'arg2'}
+        instance.command = command
+
+        instance:reExecute()
+
+        command:getMethod('execute'):assertCalledOnceWith({'arg1', 'arg2'})
     end)
     :register()
 
