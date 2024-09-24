@@ -82,9 +82,19 @@ local SlashCommandExecution = {}
 
     --[[
     Saves the instance to the addon data table.
+
+    This method also broadcasts an event to notify that the instance was saved.
+
+    @treturn bool Whether the instance was saved or not
     ]]
     function SlashCommandExecution:save()
-        -- @TODO: Implement this method in SE5 <2024.09.23>
+        local result = CommandLog.slashCommandRepository:save(self)
+
+        if result then
+            CommandLog.events:notify('SLASH_COMMAND_EXECUTION_SAVED', self)
+        end
+
+        return result
     end
 
     --[[
