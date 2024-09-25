@@ -29,8 +29,8 @@ BaseTestClass = {
         dofile('./CommandLog.lua')
 
         dofile('./src/Models/SlashCommand.lua')
-        dofile('./src/Models/SlashCommandHistory.lua')
         dofile('./src/Models/SlashCommandExecution.lua')
+        dofile('./src/Models/SlashCommandHistory.lua')
 
         CommandLogData = nil
         CommandLog.events:handleOriginal(nil, 'PLAYER_LOGIN')
