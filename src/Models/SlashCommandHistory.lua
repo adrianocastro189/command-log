@@ -80,7 +80,11 @@ local SlashCommandHistory = {}
     @treturn table The command execution history as an array
     ]]
     function SlashCommandHistory:toArray()
-        -- @TODO: Implement this in SH5 <2024.09.25>
+        return CommandLog.arr:map(self.slashCommandExecutions,
+            function(slashCommandExecution)
+                return slashCommandExecution:toArray()
+            end
+        )
     end
 
     --[[

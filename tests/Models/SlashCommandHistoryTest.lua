@@ -55,7 +55,7 @@ TestCase.new()
         local instance = Spy
             .new(CommandLog:new('CommandLog/SlashCommandHistory'))
             :mockMethod('truncateHistory')
-        
+
         instance.slashCommandExecutions = {
             'command1',
             'command2',
@@ -114,7 +114,22 @@ TestCase.new()
     :setName('toArray')
     :setTestClass(TestSlashCommandHistory)
     :setExecution(function()
-        -- @TODO: Implement this in SH5 <2024.09.25>
+        local instance = CommandLog:new('CommandLog/SlashCommandHistory')
+
+        local executionA = Spy
+            .new(CommandLog:new('CommandLog/SlashCommandExecution'))
+            :mockMethod('toArray', function() return { 'executionA' } end)
+
+        local executionB = Spy
+            .new(CommandLog:new('CommandLog/SlashCommandExecution'))
+            :mockMethod('toArray', function() return { 'executionB' } end)
+
+        instance.slashCommandExecutions = { executionA, executionB }
+
+        lu.assertEquals({
+            { 'executionA' },
+            { 'executionB' },
+        }, instance:toArray())
     end)
     :register()
 
