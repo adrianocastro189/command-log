@@ -61,7 +61,7 @@ TestCase.new()
             'command2',
         }
 
-        instance:insert('command3')
+        lu.assertIsTrue(instance:insert('command3'))
 
         lu.assertEquals({
             'command3',

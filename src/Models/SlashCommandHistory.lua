@@ -44,6 +44,9 @@ local SlashCommandHistory = {}
     function SlashCommandHistory:insert(slashCommandExecution)
         table.insert(self.slashCommandExecutions, 1, slashCommandExecution)
         self:truncateHistory()
+
+        -- @NOTE: This can be changed in the future when filtering is implemented
+        return true
     end
 
     --[[
