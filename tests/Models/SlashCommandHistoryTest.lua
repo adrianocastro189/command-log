@@ -79,7 +79,22 @@ TestCase.new()
     :setName('truncateHistory')
     :setTestClass(TestSlashCommandHistory)
     :setExecution(function()
-        -- @TODO: Implement this in SH2 <2024.09.25>
+        local instance = Spy
+            .new(CommandLog:new('CommandLog/SlashCommandHistory'))
+            :mockMethod('getMaximumAllowedLength', function() return 2 end)
+
+        instance.slashCommandExecutions = {
+            'command1',
+            'command2',
+            'command3',
+        }
+
+        instance:truncateHistory()
+
+        lu.assertEquals(instance.slashCommandExecutions, {
+            'command1',
+            'command2',
+        })
     end)
     :register()
 

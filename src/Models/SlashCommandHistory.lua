@@ -75,6 +75,9 @@ local SlashCommandHistory = {}
     The maximum allowed number of elements is defined by an addon setting.
     ]]
     function SlashCommandHistory:truncateHistory()
-        -- @TODO: Implement this in SH2 <2024.09.25>
+        self.slashCommandExecutions = CommandLog.arr:truncate(
+            self.slashCommandExecutions,
+            self:getMaximumAllowedLength()
+        )
     end
 -- end of SlashCommandHistory
