@@ -12,6 +12,41 @@ TestCase.new()
     end)
     :register()
 
+-- @covers SlashCommandHistory:getMaximumAllowedLength()
+TestCase.new()
+    :setName('getMaximumAllowedLength')
+    :setTestClass(TestSlashCommandHistory)
+    :setExecution(function(data)
+        CommandLog:setting('history.limit'):setValue(data.limit)
+
+        local instance = CommandLog:new('CommandLog/SlashCommandHistory')
+
+        lu.assertEquals(data.expected, instance:getMaximumAllowedLength())
+    end)
+    :setScenarios({
+        ['limit is nil'] = {
+            limit = nil,
+            expected = 50,
+        },
+        ['limit is a string number'] = {
+            limit = '100',
+            expected = 100,
+        },
+        ['limit is a number'] = {
+            limit = 200,
+            expected = 200,
+        },
+        ['limit is not a number'] = {
+            limit = 'foo',
+            expected = 50,
+        },
+        ['limit is a string with number'] = {
+            limit = 'foo100',
+            expected = 50,
+        },
+    })
+    :register()
+
 -- @covers SlashCommandHistory:insert()
 TestCase.new()
     :setName('insert')
