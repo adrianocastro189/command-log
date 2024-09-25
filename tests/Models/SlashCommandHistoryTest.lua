@@ -52,7 +52,24 @@ TestCase.new()
     :setName('insert')
     :setTestClass(TestSlashCommandHistory)
     :setExecution(function()
-        -- @TODO: Implement this in SH4 <2024.09.25>
+        local instance = Spy
+            .new(CommandLog:new('CommandLog/SlashCommandHistory'))
+            :mockMethod('truncateHistory')
+        
+        instance.slashCommandExecutions = {
+            'command1',
+            'command2',
+        }
+
+        instance:insert('command3')
+
+        lu.assertEquals({
+            'command3',
+            'command1',
+            'command2',
+        }, instance.slashCommandExecutions)
+
+        instance:getMethod('truncateHistory'):assertCalledOnce()
     end)
     :register()
 
