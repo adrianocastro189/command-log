@@ -10,8 +10,8 @@ TestCase.new()
         local instance = CommandLog:new('CommandLog/SlashCommandExecution')
 
         lu.assertNotNil(instance)
-        lu.assertEquals(instance.args, {})
-        lu.assertEquals(instance.executedAt, 1)
+        lu.assertEquals({}, instance.args)
+        lu.assertEquals(1, instance.executedAt)
         lu.assertIsNil(instance.slashCommand)
     end)
     :register()
@@ -159,9 +159,9 @@ TestCase.new()
 
         local data = instance:toArray()
 
-        lu.assertEquals(data.args, {'arg1', 'arg2'})
-        lu.assertEquals(data.executedAt, 1)
-        lu.assertEquals(data.slashCommand, 'command')
+        lu.assertEquals({'arg1', 'arg2'}, data.args)
+        lu.assertEquals(1, data.executedAt)
+        lu.assertEquals('command', data.slashCommand)
     end)
     :register()
 -- end of TestSlashCommandExecution

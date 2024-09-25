@@ -8,7 +8,7 @@ TestCase.new()
         local instance = CommandLog:new('CommandLog/SlashCommandHistory')
 
         lu.assertNotNil(instance)
-        lu.assertEquals(instance.slashCommandExecutions, {})
+        lu.assertEquals({}, instance.slashCommandExecutions)
     end)
     :register()
 
@@ -80,10 +80,10 @@ TestCase.new()
 
         instance:setFromArray(historyArray)
 
-        lu.assertEquals(instance.slashCommandExecutions, {
+        lu.assertEquals({
             { args = { "arg1", "arg2" }, executedAt = 1, slashCommand = { command = "command1" } },
             { args = { "arg3", "arg4" }, executedAt = 2, slashCommand = { command = "command2" } },
-        })
+        }, instance.slashCommandExecutions)
 
         -- just makes sure elements in the array are instances of SlashCommandExecution
         lu.assertEquals('function', type(instance.slashCommandExecutions[1].save))
@@ -118,10 +118,10 @@ TestCase.new()
 
         instance:truncateHistory()
 
-        lu.assertEquals(instance.slashCommandExecutions, {
+        lu.assertEquals({
             'command1',
             'command2',
-        })
+        }, instance.slashCommandExecutions)
     end)
     :register()
 
