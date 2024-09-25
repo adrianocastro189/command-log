@@ -61,7 +61,34 @@ TestCase.new()
     :setName('setFromArray')
     :setTestClass(TestSlashCommandHistory)
     :setExecution(function()
-        -- @TODO: Implement this in SH3 <2024.09.25>
+        local instance = Spy
+            .new(CommandLog:new('CommandLog/SlashCommandHistory'))
+            :mockMethod('truncateHistory')
+
+        local historyArray = {
+            {
+                args = { 'arg1', 'arg2' },
+                executedAt = 1,
+                slashCommand = 'command1',
+            },
+            {
+                args = { 'arg3', 'arg4' },
+                executedAt = 2,
+                slashCommand = 'command2',
+            },
+        }
+
+        instance:setFromArray(historyArray)
+
+        lu.assertEquals(instance.slashCommandExecutions, {
+            { args = { "arg1", "arg2" }, executedAt = 1, slashCommand = { command = "command1" } },
+            { args = { "arg3", "arg4" }, executedAt = 2, slashCommand = { command = "command2" } }
+        })
+
+        -- just makes sure elements in the array are instances of SlashCommandExecution
+        lu.assertEquals('function', type(instance.slashCommandExecutions[1].save))
+
+        instance:getMethod('truncateHistory'):assertCalledOnce()
     end)
     :register()
 

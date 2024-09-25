@@ -52,7 +52,15 @@ local SlashCommandHistory = {}
     @tparam table historyArray The command execution history as an array
     ]]
     function SlashCommandHistory:setFromArray(historyArray)
-        -- @TODO: Implement this in SH3 <2024.09.25>
+        self.slashCommandExecutions = {}
+        CommandLog.arr:each(historyArray, function(values)
+            local execution = CommandLog
+                :getClass('CommandLog/SlashCommandExecution')
+                .newFromArray(values)
+
+            table.insert(self.slashCommandExecutions, execution)
+        end)
+        self:truncateHistory()
     end
 
     --[[
