@@ -34,6 +34,8 @@ local SlashCommandHistory = {}
 
     This method also truncates the history to the allowed maximum number of
     elements.
+
+    @tparam table historyArray The command execution history as an array
     ]]
     function SlashCommandHistory:setFromArray(historyArray)
         -- @TODO: Implement this in SH3 <2024.09.25>
