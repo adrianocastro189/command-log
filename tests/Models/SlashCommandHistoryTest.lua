@@ -82,7 +82,7 @@ TestCase.new()
 
         lu.assertEquals(instance.slashCommandExecutions, {
             { args = { "arg1", "arg2" }, executedAt = 1, slashCommand = { command = "command1" } },
-            { args = { "arg3", "arg4" }, executedAt = 2, slashCommand = { command = "command2" } }
+            { args = { "arg3", "arg4" }, executedAt = 2, slashCommand = { command = "command2" } },
         })
 
         -- just makes sure elements in the array are instances of SlashCommandExecution
