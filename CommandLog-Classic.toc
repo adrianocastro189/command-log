@@ -13,3 +13,4 @@ CommandLog.lua
 
 src\Models\SlashCommand.lua
 src\Models\SlashCommandExecution.lua
+src\Models\SlashCommandHistory.lua
