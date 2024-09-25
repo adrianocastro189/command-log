@@ -36,10 +36,14 @@ local SlashCommandHistory = {}
     --[[
     Inserts a command execution at the top of this history instance.
 
+    This method also truncates the history to the maximum allowed number of
+    elements.
+
     @treturn boolean Whether the command execution was successfully inserted
     ]]
     function SlashCommandHistory:insert(slashCommandExecution)
-        -- @TODO: Implement this in SH4 <2024.09.25>
+        table.insert(self.slashCommandExecutions, 1, slashCommandExecution)
+        self:truncateHistory()
     end
 
     --[[
