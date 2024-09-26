@@ -30,6 +30,20 @@ CommandLog = StormwindLibrary_v1_14_0.new({
                     },
                 },
             },
+            {
+                id = 'ui',
+                settings = {
+                    {
+                        id = 'showMinimapIcon',
+                        label = 'Show Minimap Icon',
+                        description = 'Controls whether the minimap icon is visible or not',
+                        type = 'boolean',
+                        default = true,
+                        scope = 'player',
+                        accessibleByCommand = true,
+                    },
+                },
+            },
         },
     },
 })
